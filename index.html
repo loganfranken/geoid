@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geoid Test</title>
+</head>
+<body>
+  <script src="geoid.js"></script>
+  <script>
+    geoid
+      .getPosition()
+      .then(function(position) { console.log(position) })
+      .catch(function(err) { console.log(err) });
+  </script>
+</body>
+</html>
