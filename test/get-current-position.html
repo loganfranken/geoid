@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation Tests</title>
+  <link rel="stylesheet" href="style/main.css" />
+</head>
+<body>
+  <h1>watchPosition</h1>
+
+  <ul>
+    <li>Latitude: <span id="value-lat" /></li>
+    <li>Longitude: <span id="value-lon" /></li>
+    <li>Accuracy: <span id="value-acc" /></li>
+  </ul>
+
+  <script type="text/javascript">
+
+    navigator.geolocation.watchPosition(
+
+      function(pos) {
+
+        document.getElementById("value-lat").innerHTML = pos.coords.latitude;
+        document.getElementById("value-lon").innerHTML = pos.coords.longitude;
+        document.getElementById("value-acc").innerHTML = pos.coords.accuracy;
+
+      }
+
+    );
+
+  </script>
+</body>
+</html>

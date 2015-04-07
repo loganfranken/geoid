@@ -1,0 +1,23 @@
+body
+{
+  font-family: Arial, sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+h1
+{
+  font-size: 1.25em;
+}
+
+ul
+{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul span
+{
+  font-weight: normal;
+}
