@@ -7,13 +7,22 @@
 <body>
   <h1>watchPosition</h1>
 
-  <ul>
-    <li>Latitude: <span id="value-lat" /></li>
-    <li>Longitude: <span id="value-lon" /></li>
-    <li>Accuracy: <span id="value-acc" /></li>
+  <ul id="stats">
+    <li>Latitude: <span id="value-lat"></span></li>
+    <li>Longitude: <span id="value-lon"></span></li>
+    <li>Accuracy: <span id="value-acc"></span></li>
   </ul>
 
   <script type="text/javascript">
+
+  var time = 0;
+  var interval = 10;
+
+  function updateTime() {
+    time += interval;
+  }
+
+  var intervalId = setInterval(updateTime, interval);
 
     navigator.geolocation.watchPosition(
 
@@ -22,6 +31,8 @@
         document.getElementById("value-lat").innerHTML = pos.coords.latitude;
         document.getElementById("value-lon").innerHTML = pos.coords.longitude;
         document.getElementById("value-acc").innerHTML = pos.coords.accuracy;
+
+        document.getElementById("stats").innerHTML += "<li>" + pos.coords.accuracy + " accuracy at " + time + " millseconds</li>";
 
       },
 
