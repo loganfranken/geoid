@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation Tests</title>
+  <link rel="stylesheet" href="style/main.css" />
+</head>
+<body>
+  <h1>watchPosition with getCurrentPosition</h1>
+
+  <ul id="stats">
+    <li>Latitude: <span id="value-lat"></span></li>
+    <li>Longitude: <span id="value-lon"></span></li>
+    <li>Accuracy: <span id="value-acc"></span></li>
+  </ul>
+
+  <script type="text/javascript">
+
+  var time = 0;
+  var interval = 10;
+
+  function updateTime() {
+    time += interval;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+
+    function(pos) {
+
+      document.getElementById("value-lat").innerHTML = pos.coords.latitude;
+      document.getElementById("value-lon").innerHTML = pos.coords.longitude;
+      document.getElementById("value-acc").innerHTML = pos.coords.accuracy;
+
+      document.getElementById("stats").innerHTML += "<li>" + pos.coords.accuracy + " accuracy at " + time + " millseconds</li>";
+
+    },
+
+    function() {},
+
+    {
+      enableHighAccuracy: false,
+      maximumAge: Infinity
+    }
+
+  );
+
+  var intervalId = setInterval(updateTime, interval);
+
+    navigator.geolocation.watchPosition(
+
+      function(pos) {
+
+        document.getElementById("value-lat").innerHTML = pos.coords.latitude;
+        document.getElementById("value-lon").innerHTML = pos.coords.longitude;
+        document.getElementById("value-acc").innerHTML = pos.coords.accuracy;
+
+        document.getElementById("stats").innerHTML += "<li>" + pos.coords.accuracy + " accuracy at " + time + " millseconds</li>";
+
+      },
+
+      function() { },
+
+      {
+        enableHighAccuracy: true,
+        maximumAge: 0
+      }
+
+    );
+
+  </script>
+</body>
+</html>
