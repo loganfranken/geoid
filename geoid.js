@@ -52,6 +52,9 @@ var geoid = (function() {
           // On Success
           function(position) {
 
+            hasPosition = true;
+            currentPosition = position;
+
             if(position.coords.accuracy <= minAccuracy) {
 
               // As soon as we have achieved the desired accuracy, clear the watch
@@ -78,18 +81,10 @@ var geoid = (function() {
     });
   }
 
-  function hasPosition() {
-    return hasPosition;
-  }
-
-  function getLastPosition() {
-    return currPosition;
-  }
-
   return {
     getPosition: getPosition,
-    hasPosition: hasPosition,
-    getLastPosition: getLastPosition
+    hasPosition: function() { return hasPosition; },
+    getLastPosition: function() { return currentPosition; }
   };
 
 })();

@@ -8,8 +8,13 @@
   <script>
     geoid
       .getPosition()
-      .then(function(position) { console.log(position) })
+      .then(function(position) { console.log(position);
+        console.log(geoid.getLastPosition());
+        console.log(geoid.hasPosition()); })
       .catch(function(err) { console.log(err) });
+
+    console.log(geoid.getLastPosition());
+    console.log(geoid.hasPosition());
   </script>
 </body>
 </html>
