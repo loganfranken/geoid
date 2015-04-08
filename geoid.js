@@ -2,7 +2,7 @@ var geoid = (function() {
 
   var watchId = null;
   var hasPosition = false;
-  var currPosition = null;
+  var currentPosition = null;
 
   function getPosition() {
 
@@ -78,8 +78,18 @@ var geoid = (function() {
     });
   }
 
+  function hasPosition() {
+    return hasPosition;
+  }
+
+  function getLastPosition() {
+    return currPosition;
+  }
+
   return {
     getPosition: getPosition,
+    hasPosition: hasPosition,
+    getLastPosition: getLastPosition
   };
 
 })();
