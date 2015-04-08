@@ -6,6 +6,7 @@ geoid.getPosition = function() {
   var minAccuracy = 40; // Measured in meters
   var enableHighAccuracy = true;
   var timeout = 30000; // 5 minutes
+  var maximumAge = 0; // Whether or not a cached position can be used
 
   return new Promise(function(resolve, reject) {
 
@@ -32,7 +33,8 @@ geoid.getPosition = function() {
       // Settings
       {
         enableHighAccuracy: enableHighAccuracy,
-        timeout: timeout
+        timeout: timeout,
+        maximumAge: maximumAge
       }
 
     );
