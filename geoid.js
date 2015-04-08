@@ -6,11 +6,25 @@ var geoid = (function() {
 
   function getPosition() {
 
-    // Settings
-    var minAccuracy = 100; // Measured in meters
+    // Default Settings
+
+    // Minimimum Accuracy: The minimum level of accuracy (measured in meters)
+    // to accept
+    // Default: 10 meters (30 feet)
+    var minAccuracy = 10; // Default: 10 meters (30 feet)
+
+    // Enable High Accuracy: Whether or not an accurate, but possibly
+    // expensive, geolocation result should be returned
+    // Default: true
     var enableHighAccuracy = true;
-    var timeout = 30000; // 5 minutes
-    var maximumAge = 0; // Whether or not a cached position can be used
+
+    // Timeout: How long to wait for a result before giving up
+    // Default: 30 seconds
+    var timeout = 30000;
+
+    // Maximum Age: How old (in milliseconds) of a cached position to accept
+    // Default: 0 (don't accept a cached posit)
+    var maximumAge = 0;
 
     // Immediately get an inaccurate current position as a fallback in case
     // our other attempts fail
@@ -47,6 +61,40 @@ var geoid = (function() {
       // repeated watchPosition calls
       return new Promise(function(resolve, reject) {
 
+        // Start measuring elapsed time
+        var time = 0;
+        var timeMeasureInterval = 10;
+
+        function updateTime()
+        {
+
+          time += timeMeasureInterval;
+
+          // We've exceeded our timeout
+          if(time > timeout) {
+
+            if(currentPosition === null) {
+
+              // We weren't able to get *any* position, so we return an
+              // error state
+              reject('Unable to retrieve position');
+
+            }
+            else {
+
+              // Return the best geolocation data we were able to get
+              clearInterval(intervalId);
+              navigator.geolocation.clearWatch(watchId);
+              resolve(currentPosition);
+
+            }
+
+          }
+
+        }
+
+        var intervalId = setInterval(updateTime, timeMeasureInterval);
+
         watchId = navigator.geolocation.watchPosition(
 
           // On Success
@@ -57,7 +105,9 @@ var geoid = (function() {
 
             if(position.coords.accuracy <= minAccuracy) {
 
-              // As soon as we have achieved the desired accuracy, clear the watch
+              // As soon as we have achieved the desired accuracy,
+              // clear the watch
+              clearInterval(intervalId);
               navigator.geolocation.clearWatch(watchId);
               resolve(position);
 
