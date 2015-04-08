@@ -2,12 +2,49 @@ var geoid = {};
 
 geoid.getPosition = function() {
 
-  var watchId;
-  var minAccuracy = 40; // Measured in meters
+  // Settings
+  var minAccuracy = 100; // Measured in meters
   var enableHighAccuracy = true;
   var timeout = 30000; // 5 minutes
   var maximumAge = 0; // Whether or not a cached position can be used
 
+  var watchId = null;
+  var hasPosition = false;
+  var currPosition = null;
+
+  // Immediately get an inaccurate current position as a fallback in case
+  // our other attempts fail
+  navigator.geolocation.getCurrentPosition(
+
+    // On Success
+    function(position) {
+
+      // Don't override an accurate position (if it somehow came in first)
+      if(!geoid.hasPosition)
+      {
+        hasPosition = true;
+        currentPosition = position;
+      }
+
+    },
+
+    // On Error
+    function(error) {
+
+      // Swallow errors occurring from this initial call
+
+    },
+
+    // Settings (for a quick, inaccurate call)
+    {
+      enableHighAccuracy: false,
+      maximumAge: Math.Infinity
+    }
+
+  );
+
+  // Set up the promise for the more accurate geolocation call using
+  // repeated watchPosition calls
   return new Promise(function(resolve, reject) {
 
     watchId = navigator.geolocation.watchPosition(
