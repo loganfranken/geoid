@@ -6,8 +6,7 @@ var geoid = (function() {
 
   // Default Settings
 
-  // Minimimum Accuracy: The minimum level of accuracy (measured in meters)
-  // to accept
+  // Desired Accuracy: The desired level of accuracy (measured in meters)
   // Default: 10 meters (30 feet)
   var minAccuracy = 10; // Default: 10 meters (30 feet)
 
@@ -17,8 +16,8 @@ var geoid = (function() {
   var enableHighAccuracy = true;
 
   // Timeout: How long to wait for a result before giving up
-  // Default: 30 seconds
-  var timeout = 30000;
+  // Default: 10 seconds
+  var timeout = 10000;
 
   // Maximum Age: How old (in milliseconds) of a cached position to accept
   // Default: 0 (don't accept a cached position)
