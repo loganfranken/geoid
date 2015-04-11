@@ -28,34 +28,20 @@ var geoid = (function() {
 
     // Immediately get an inaccurate current position as a fallback in case
     // our other attempts fail
-    navigator.geolocation.getCurrentPosition(
-
-      // On Success
-      function(position) {
+    getQuickPosition().then(function() {
 
         // Don't override an accurate position (if it somehow came in first)
         if(!geoid.hasPosition)
-          {
-            hasPosition = true;
-            currentPosition = position;
-          }
-
-        },
-
-        // On Error
-        function(error) {
-
-          // Swallow errors occurring from this initial call
-
-        },
-
-        // Settings (for a quick, inaccurate call)
         {
-          enableHighAccuracy: false,
-          maximumAge: Math.Infinity
+          hasPosition = true;
+          currentPosition = position;
         }
 
-      );
+      }).catch(function() {
+
+        // Swallow the exception for this quick call
+
+      });
 
       // Set up the promise for the more accurate geolocation call using
       // repeated watchPosition calls
@@ -129,6 +115,34 @@ var geoid = (function() {
 
         );
     });
+  }
+
+  function getQuickPosition() {
+
+    return new Promise(function(resolve, reject) {
+
+      navigator.geolocation.getCurrentPosition(
+
+        // On Success
+        function(position) {
+          resolve(position);
+        },
+
+        // On Error
+        function(error) {
+          reject(error);
+        },
+
+        // Settings (for a quick, inaccurate call)
+        {
+          enableHighAccuracy: false,
+          maximumAge: Math.Infinity
+        }
+
+      );
+
+    });
+
   }
 
   return {
