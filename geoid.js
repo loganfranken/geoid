@@ -23,7 +23,7 @@ var geoid = (function() {
     var timeout = 30000;
 
     // Maximum Age: How old (in milliseconds) of a cached position to accept
-    // Default: 0 (don't accept a cached posit)
+    // Default: 0 (don't accept a cached position)
     var maximumAge = 0;
 
     // Immediately get an inaccurate current position as a fallback in case
