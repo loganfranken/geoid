@@ -74,39 +74,39 @@ var geoid = (function() {
 
       });
 
-        watchId = navigator.geolocation.watchPosition(
+      // Set up the watchPosition calls
+      watchId = navigator.geolocation.watchPosition(
 
-          // On Success
-          function(position) {
+        // On Success
+        function(position) {
 
-            hasPosition = true;
-            currentPosition = position;
+          hasPosition = true;
+          currentPosition = position;
 
-            if(position.coords.accuracy <= minAccuracy) {
+          if(position.coords.accuracy <= minAccuracy) {
 
-              // As soon as we have achieved the desired accuracy,
-              // clear the watch
-              clearInterval(intervalId);
-              navigator.geolocation.clearWatch(watchId);
-              resolve(position);
+            // As soon as we have achieved the desired accuracy,
+            // clear the watch
+            navigator.geolocation.clearWatch(watchId);
+            resolve(position);
 
-            }
-
-          },
-
-          // On Error
-          function(error) {
-            reject(error)
-          },
-
-          // Settings
-          {
-            enableHighAccuracy: enableHighAccuracy,
-            timeout: timeout,
-            maximumAge: maximumAge
           }
 
-        );
+        },
+
+        // On Error
+        function(error) {
+          reject(error)
+        },
+
+        // Settings
+        {
+          enableHighAccuracy: enableHighAccuracy,
+          timeout: timeout,
+          maximumAge: maximumAge
+        }
+
+      );
     });
   }
 
@@ -139,6 +139,8 @@ var geoid = (function() {
 
   }
 
+  // A simple timer that calls the provided callback function upon
+  // exceeding the timeout
   function startTimer(callback) {
 
     var time = 0;
