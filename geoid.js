@@ -28,7 +28,20 @@ var geoid = (function() {
   // Default: 10 milliseconds
   var timeMeasureInterval = 10;
 
-  function getPosition() {
+  function getPosition(settings) {
+
+    if(settings)
+    {
+      if(settings.hasOwnProperty('accuracy'))
+      {
+        minAccuracy = settings.accuracy;
+      }
+
+      if(settings.hasOwnProperty('timeout'))
+      {
+        timeout = settings.timeout;
+      }
+    }
 
     // Immediately get an inaccurate current position as a fallback in case
     // our other attempts fail
