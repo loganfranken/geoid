@@ -114,7 +114,6 @@ var geoid = (function() {
         // Settings
         {
           enableHighAccuracy: enableHighAccuracy,
-          timeout: timeout,
           maximumAge: maximumAge
         }
 
