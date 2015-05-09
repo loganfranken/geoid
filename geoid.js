@@ -7,8 +7,8 @@ var geoid = (function() {
   // Default Settings
 
   // Desired Accuracy: The desired level of accuracy (measured in meters)
-  // Default: 10 meters (30 feet)
-  var minAccuracy = 10; // Default: 10 meters (30 feet)
+  // Default: 100 meters (328 feet)
+  var minAccuracy = 100; // Default: 100 meters (328 feet)
 
   // Enable High Accuracy: Whether or not an accurate, but possibly
   // expensive, geolocation result should be returned

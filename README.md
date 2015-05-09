@@ -58,7 +58,7 @@ geoid.getPosition({
 
 ### accuracy (Number)
 
-**Default:** 10 meters (30 feet)
+**Default:** 100 meters (328 feet)
 
 The desired level of accuracy (measured in meters).
 
