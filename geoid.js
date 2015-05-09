@@ -16,8 +16,8 @@ var geoid = (function() {
   var enableHighAccuracy = true;
 
   // Timeout: How long to wait for a result before giving up
-  // Default: 10 seconds
-  var timeout = 10000;
+  // Default: 3 seconds
+  var timeout = 3000;
 
   // Maximum Age: How old (in milliseconds) of a cached position to accept
   // Default: 0 (don't accept a cached position)

@@ -68,7 +68,7 @@ current location, you would set this value to ``5``.
 
 ### timeout (Number)
 
-**Default:** 10,000 milliseconds (10 seconds)
+**Default:** 3,000 milliseconds (3 seconds)
 
 The maximum amount of time geoid should spend trying to retrieve the user's
 location within the desired accuracy level.
