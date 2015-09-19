@@ -1,0 +1,21 @@
+{
+  "name": "geoid",
+  "main": "geoid.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/loganfranken/geoid",
+  "authors": [
+    "Logan Franken"
+  ],
+  "description": "Simplified interface to the HTML5 geolocation API",
+  "keywords": [
+    "geolocation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
