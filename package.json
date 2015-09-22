@@ -1,0 +1,22 @@
+{
+  "name": "geoid",
+  "version": "0.1.0",
+  "description": "Simplified interface for using the geolocation API",
+  "main": "geoid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/loganfranken/geoid.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loganfranken/geoid/issues"
+  },
+  "homepage": "https://github.com/loganfranken/geoid",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
