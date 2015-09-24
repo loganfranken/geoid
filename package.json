@@ -1,6 +1,6 @@
 {
   "name": "geoid",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Simplified interface for using the geolocation API",
   "main": "geoid.js",
   "scripts": {
