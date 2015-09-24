@@ -18,6 +18,8 @@
     "test",
     "tests",
     "demo.html",
-    "README.md"
+    "README.md",
+    "package.json",
+    "gulpfile.js"
   ]
 }
