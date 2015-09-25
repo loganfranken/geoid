@@ -176,7 +176,8 @@ var geoid = (function() {
   return {
     getPosition: getPosition,
     hasPosition: function() { return hasPosition; },
-    getLastPosition: function() { return currentPosition; }
+    getLastPosition: function() { return currentPosition; },
+    getQuickPosition: getQuickPosition
   };
 
 })();

@@ -77,6 +77,15 @@ For example, if you want geoid to keep trying to get more accurate
 geolocation data for a maximum of 30 seconds, you would set this value to
 ``30000``.
 
+## Quick Position
+
+If you want to retrieve quick, but inaccurate, geolocation data, use
+`getQuickPosition`:
+
+```javascript
+geoid.getQuickPosition().then(function(position) { });
+```
+
 ## Fallbacks
 
 Geoid provides a number of fallbacks if, for whatever reason, the desired
